@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>APH Examination Registration</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f7f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #003366;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 15px;
+    }
+
+    button {
+      background: #0056b3;
+      color: white;
+      padding: 12px;
+      width: 100%;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background: #e6f2ff;
+      border-left: 5px solid #0056b3;
+      display: none;
+    }
+
+    .result strong {
+      display: block;
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+<header>APH EXAMINATION REGISTRATION</header>
+
+<div class="container">
+  <div class="form-group">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" placeholder="Enter your full name" />
+  </div>
+  <div class="form-group">
+    <label for="father">Father's Name</label>
+    <input type="text" id="father" placeholder="Enter father's name" />
+  </div>
+  <div class="form-group">
+    <label for="mother">Mother's Name</label>
+    <input type="text" id="mother" placeholder="Enter mother's name" />
+  </div>
+  <div class="form-group">
+    <label for="dob">Date of Birth</label>
+    <input type="date" id="dob" />
+  </div>
+  <div class="form-group">
+    <label for="photo">Upload Your Photo</label>
+    <input type="file" id="photo" accept="image/*" />
+  </div>
+  <button onclick="register()">Register</button>
+
+  <div class="result" id="result">
+    <h3>Registration Successful!</h3>
+    <strong id="roll"></strong>
+    <strong id="admission"></strong>
+  </div>
+</div>
+
+<script>
+  function register() {
+    const name = document.getElementById('name').value.trim();
+    const father = document.getElementById('father').value.trim();
+    const mother = document.getElementById('mother').value.trim();
+    const dob = document.getElementById('dob').value;
+    const photo = document.getElementById('photo').files[0];
+
+    if (!name || !father || !mother || !dob || !photo) {
+      alert("Please fill in all fields and upload a photo.");
+      return;
+    }
+
+    const roll = Math.floor(1000000 + Math.random() * 9000000);
+    const admission = Math.floor(10000000 + Math.random() * 90000000);
+
+    document.getElementById('roll').innerText = "Roll Number: " + roll;
+    document.getElementById('admission').innerText = "Admission Number: " + admission;
+    document.getElementById('result').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
